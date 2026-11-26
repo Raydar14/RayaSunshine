@@ -1,0 +1,144 @@
+/* Raya Sun: Sunshine and Darkness
+   Colors come from the RAYA SUN logo. */
+
+:root {
+  --gold: #FCC312;
+  --orange: #F08A1C;
+  --teal: #02A8A2;
+  --blue: #0098E7;
+  --black: #0b0b0d;
+  --night: #121318;
+  --cream: #FFF8EA;
+  --sand: #F6E7C8;
+  --ink: #2a2118;
+  --muted-light: #6b5a45;
+  --muted-dark: #a9b3bd;
+  --radius: 14px;
+  --max: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 {
+  font-family: "Cormorant", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 .5em;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); }
+h3 { font-size: 1.5rem; }
+p { margin: 0 0 1em; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+section { padding: 72px 0; }
+
+/* Sunshine side (light) */
+body.sun { background: var(--cream); color: var(--ink); }
+body.sun .muted { color: var(--muted-light); }
+body.sun .card { background: #fff; border: 1px solid #f0dfbd; }
+body.sun .accent { color: #b7800a; }
+
+/* Darkness side (dark) */
+body.dark { background: var(--black); color: #eef1f4; }
+body.dark .muted { color: var(--muted-dark); }
+body.dark .card { background: var(--night); border: 1px solid #23262e; }
+body.dark .accent { color: var(--teal); }
+
+/* Navigation */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 12px 20px;
+  background: rgba(11, 11, 13, .94); color: #fff;
+}
+.nav .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav .brand img { width: 40px; height: 40px; border-radius: 50%; }
+.nav .brand span { font-family: "Cormorant", serif; font-size: 1.35rem; letter-spacing: .06em; }
+.nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; font-size: .95rem; opacity: .85; }
+.nav ul a:hover, .nav ul a[aria-current="page"] { opacity: 1; color: var(--gold); }
+.nav-toggle { display: none; background: none; border: 1px solid #444; color: #fff; border-radius: 8px; padding: 6px 10px; font: inherit; }
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .nav ul { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 12px 20px 18px; background: var(--black); }
+  .nav ul.open { display: flex; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: 999px;
+  font-weight: 600; text-decoration: none; font-size: .95rem;
+  border: 2px solid transparent;
+}
+.btn-sun { background: var(--gold); color: #1b1405; }
+.btn-dark { background: var(--teal); color: #031615; }
+.btn-ghost { border-color: currentColor; }
+.btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+
+/* Home hero */
+.hero { background: var(--black); color: #fff; text-align: center; padding: 56px 0 40px; }
+.hero img { width: min(360px, 80vw); margin: 0 auto 8px; }
+.hero p { max-width: 620px; margin: 0 auto 1em; color: #d8dde2; }
+.hero .tagline { font-family: "Cormorant", serif; font-size: clamp(1.6rem, 4vw, 2.3rem); color: #fff; }
+
+/* Sunshine and Darkness split */
+.split { display: grid; grid-template-columns: 1fr 1fr; }
+.split a { display: block; padding: 64px 40px; text-decoration: none; min-height: 340px; }
+.split .side-sun { background: linear-gradient(160deg, #FFF3D6, #FFD978); color: var(--ink); }
+.split .side-dark { background: linear-gradient(160deg, #10141c, #050608); color: #eef1f4; }
+.split h2 { margin-bottom: .3em; }
+.split p { max-width: 420px; }
+.split .go { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 760px) {
+  .split { grid-template-columns: 1fr; }
+  .split a { padding: 48px 20px; min-height: 0; }
+}
+
+/* Page header */
+.page-head { padding: 64px 0 32px; }
+body.sun .page-head { background: linear-gradient(180deg, #FFE9AE, var(--cream)); }
+body.dark .page-head { background: linear-gradient(180deg, #0f1622, var(--black)); }
+.page-head p { max-width: 640px; font-size: 1.1rem; }
+
+/* Cards and grids */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.card { border-radius: var(--radius); padding: 24px; }
+.card h3 { margin-bottom: .3em; }
+.card .meta { font-size: .85rem; }
+
+.note {
+  border-left: 4px solid var(--gold); padding: 14px 18px; margin: 24px 0;
+  background: rgba(252, 195, 18, .12); border-radius: 0 var(--radius) var(--radius) 0;
+}
+body.dark .note { border-color: var(--teal); background: rgba(2, 168, 162, .1); }
+
+/* Photo grid placeholder */
+.photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.photo-slot {
+  aspect-ratio: 4 / 5; border-radius: var(--radius);
+  background: linear-gradient(160deg, #1b2330, #0b0d12);
+  display: flex; align-items: flex-end; padding: 14px; color: #c9d1d9; font-size: .9rem;
+}
+
+/* Footer */
+.site-footer { background: var(--black); color: #c9d1d9; padding: 40px 0; font-size: .92rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+.site-footer a { color: #fff; }
+.site-footer .links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.site-footer .disclaimer { flex-basis: 100%; color: #8e98a3; font-size: .85rem; }
+
+/* Links page */
+.linklist { display: grid; gap: 12px; max-width: 480px; margin: 0 auto; }
+.linklist a { display: block; text-align: center; padding: 16px; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+.linklist .l-sun { background: var(--gold); color: #1b1405; }
+.linklist .l-dark { background: var(--night); color: #fff; border: 1px solid #2b2f38; }
